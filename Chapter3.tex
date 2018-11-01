@@ -1,0 +1,225 @@
+\chapter{Conceptual Framework}
+\section{Model Structure}
+\subsection{Time and Goods Consumption}
+The multiple discrete continuous extreme value (MDCEV) model of Bhat \cite{Bhat2005, Bhat2008TheExtensions} is used as a baseline model formulation. The utility function takes the form of a generalised variant of the translated CES utility function
+\begin{equation}
+    U(\textbf{x}) = \sum_{k=1}^K \frac{\gamma_k}{\alpha_k}\psi_k \left[\left(\frac{x_k}{\gamma_k}+1\right)^{\alpha_k} - 1\right]
+\end{equation}
+
+This takes the form of a linear expenditure system (LES) when $\alpha_k -> 0 \forall k$
+\begin{equation}
+    U(\textbf{x}) = \sum_{k=1}^K \gamma_k \psi_k \ln \left(\frac{x_k}{\gamma_k}+1\right) .
+\end{equation}
+
+Bhat formulates the MDCEV model as a direct utility function, which is constrained by a budget constraint on total consumption. This can take the form of a time constraint in the case of time-use models or a monetary constraint, as a function of income, in the case of expenditure models. In order to apply the household production function of DeSerpa \cite{DeSerpa1971}, the model must be constrained in both time and money. Castro et al. \cite{Castro2012AccommodatingModel} provides a system of multiple constraints and discuss identification issues with this extension to the MDCEV model structure. A separate set of constraints are also required, in the form of minimum time and money consumption constraints. These are the technology constraints defined by DeSerpa in his original formulation of household production \cite{DeSerpa1971}. Van Nostrand et al. \cite{VanNostrand2013AnalysisFramework} address this component of the model formulation in the context of long-distance vacation travel demand. The resulting MDCEV utility function takes the following form
+\begin{equation}
+    U(\textbf{x}) = \sum_{k=1}^K \gamma_k \psi_k \ln \left(\frac{x_k - x_k^0}{\gamma_k}+1\right)
+\end{equation}
+
+Astroza et al. \cite{Astroza2017AConsumption} present a first attempt at incorporating the DeSerpa household production function into the MDCEV model framework. An optimisation function can be defined for individuals $q$ ($q$ = 1,2,....Q), consuming goods $x_k$ ($k$=1,2,...K), allocating time $t_n$ to non-work activities ($n$=1,2,...N), and allocating time $t_w$ to the work activity. It takes the form
+
+\begin{equation}
+    \max(U_q(\bm{x}_q,\bm{t}_q,\bm{t}_{qw})) = \sum_{k=1}^K u_k(x_{qk}) + \sum_{n=1}^N\widetilde{u}_n(t_n) + \widetilde{u}_w(t_w)
+\end{equation}
+
+subject to the following constraints
+\begin{subequations}\label{eq:st}
+    \begin{align}
+        &\sum_{k=1}^K p_{qk}x_{qk} = E_q + \omega_q t_{qw} \\
+        &\sum_{n=1}^N t_{qn} + t_{qw} = T_q
+    \end{align}
+\end{subequations}
+
+The value of time appears in both the money and time budget constraints, which adds an additional level of complex compared with the standard MDCEV model because it represents a multidimensional constraint. Fortunately, this complication can be isolated to the determination of $t_w$ and the other decision variables (i.e. $t_{qn}$ and $x_{qk}$) can be determined in the usual way. Taking account for minimum required consumption and time allocation, Norstrand et al. \cite{VanNostrand2013AnalysisFramework} provide the following utility function definitions
+\begin{subequations}\label{eq:util1}
+\begin{align}
+    &u_k(x_{qk}) = 
+    \begin{cases}
+    \psi_{qk}x_{qk} & \text{if } x_{qk} \leq x_{qk}^0 \\
+    \psi_{qk}x_{qk}^0 + \gamma_k \psi_k \ln \left(\frac{x_{qk} - x_{qk}^0}{\gamma_k}+1\right) & \text{otherwise}
+    \end{cases} \\
+    &\widetilde{u}_n(t_{qn}) = 
+    \begin{cases}
+    \psi_{qn}t_{qn} & \text{if } t_{qn} \leq t_{qn}^0 \\
+    \psi_{qn}t_{qn}^0 + \gamma_n \psi_n \ln \left(\frac{t_{qn} - t_{qn}^0}{\gamma_n}+1\right) & \text{otherwise}
+    \end{cases} \\
+    &\widetilde{u}_w(t_{qw}) = 
+    \begin{cases}
+    \psi_{qw}t_{qw} & \text{if } t_{qw} \leq t_{qw}^0 \\
+    \psi_{qw}t_{qw}^0 + \gamma_n \psi_n \ln \left(\frac{t_{qw} - t_{qw}^0}{\gamma_w}+1\right) & \text{otherwise}
+    \end{cases}
+\end{align}
+\end{subequations}
+
+The Lagrangian function for individual $q$ is defined by
+\begin{equation}
+    \mathcal{L}_g = U_q\left(\bm{x}_q,\bm{t}_q,\bm{t}_{qw}\right) + \lambda_q\left(E_q + \omega_q t_{qw} - \sum_{k=1}^K p_{qk}x_{qk}\right) + \mu_{q}\left(T_q - t_{qw} - \sum_{n=1}^N t_{qn}\right)
+\end{equation}
+where $\lambda_q$ and $\mu_q$ are multipliers for the time and money constraints, representing the marginal utilities of time and expenditure. The KKT first-order conditions are defined by
+\begin{subequations}\label{eq:kkt1}
+    \begin{align}
+        &u_k'\left(x_{qk}^*\right) - \lambda_q p_{qk} = 0 & \text{if } x_{qk}^* > 0,k=1,2,...K \\
+        &u_k'\left(x_{qk}^*\right) - \lambda_q p_{qk} < 0 & \text{if } x_{qk}^* = 0,k=1,2,...K \\
+        &\widetilde{u}_n'\left(t_{qn}^*\right) - \mu_q = 0 & \text{if } t_{qn}^* > 0,n=1,2,...N \\
+        &\widetilde{u}_n'\left(t_{qn}^*\right) - \mu_q < 0 & \text{if } t_{qn}^* = 0,n=1,2,...N \\
+        &\widetilde{u}_w'\left(t_{qw}^*\right) +\omega_q \lambda_q - \mu_q = 0 & \text{if } t_{qw}^* > 0,w=1,2,...W \\
+        &\widetilde{u}_w'\left(t_{qw}^*\right) +\omega_q \lambda_q - \mu_q < 0 & \text{if } t_{qw}^* = 0,w=1,2,...W
+    \end{align}
+\end{subequations}
+where $u_{qk}'$, $\widetilde{u}_{qn}'$, and $\widetilde{u}_{qw}'$ are the marginal utility functions defined by
+\begin{subequations}\label{eq:kkt2}
+    \begin{align}
+        &u_k'(x_{qk}^*) = 
+        \begin{cases}
+        \psi_{qk} & \text{if } x_{qk}^* \leq x_{qk}^0 \\
+        \psi_{qk}\left(\frac{x_{qk}^* - x_{qk}^0}{\gamma_k}+1\right)^{-1} & \text{otherwise}
+        \end{cases} \\
+        &\widetilde{u}_n'(t_{qn}^*) = 
+        \begin{cases}
+        \psi_{qn} & \text{if } t_{qn}^* \leq t_{qn}^0 \\
+        \psi_{qn} \left(\frac{t_{qn}^* - t_{qn}^0}{\gamma_n}+1\right)^{-1} & \text{otherwise}
+        \end{cases} \\
+        &\widetilde{u}_w'(t_{qw}^*) = 
+        \begin{cases}
+        \psi_{qw} & \text{if } t_{qw}^* \leq t_{qw}^0 \\
+        \psi_n \left(\frac{t_{qw}^* - t_{qw}^0}{\gamma_w}+1\right)^{-1} & \text{otherwise}
+        \end{cases}
+    \end{align}
+\end{subequations}
+
+The optimal consumption (of goods) and time allocation (to activities) satisfies the KKT conditions in equation \ref{eq:kkt2} and the constraints in equation \ref{eq:st}. The individual must consume at least 1 good and participate in at least 1 non-work activity, represented by a Hicksian composite good as follows (see Bhat \cite{Bhat2008TheExtensions} for details)
+\begin{subequations}\label{eq:out1}
+    \begin{align}
+    &\psi_{qk}\left(x_{qk}^* - x_{qk}^0\right)^{-1} - \lambda_{q} p_{q1} = 0 \\
+    &\psi_{qn}\left(t_{qn}^* - t_{qn}^0\right)^{-1} - \mu_{q} = 0 
+    \end{align}
+\end{subequations}
+From the conditions in equations \ref{eq:out3}a and \ref{eq:out3}b conditions, $\lambda_{q}$ and $\mu_q$ are given by
+\begin{subequations}\label{eq:out2}
+    \begin{align}
+    &\lambda_{q} = \frac{\psi_{qk}}{p_{q1}}\left(x_{qk}^* - x_{qk}^0\right)^{-1} \\
+    &\mu_{q} = \psi_{qn}\left(t_{qn}^* - t_{qn}^0\right)^{-1}
+    \end{align}
+\end{subequations}
+Similar conditions to Astroza et al. \cite{Astroza2017AConsumption} can be drawn from substituting equations \ref{eq:out2}a and \ref{eq:out2}b into equations \ref{eq:kkt1}a-f, with the important distinction of the work activity being optional (i.e. having a translation term).
+\begin{subequations}\label{eq:kkt3}
+    \begin{align}
+        &\frac{u_k'\left(x_{qk}^*\right)}{p_{qk}} = u_1'\left(x_{q1}^*\right) & \text{if } x_{qk}^* > 0,k=2,2,...K \\
+        &\frac{u_k'\left(x_{qk}^*\right)}{p_{qk}} < u_1'\left(x_{q1}^*\right) & \text{if } x_{qk}^* = 0,k=2,2,...K \\
+        &\widetilde{u}_n'\left(t_{qn}^*\right) = \widetilde{u}_1'\left(t_{q1}^*\right) & \text{if } t_{qn}^* > 0,n=2,2,...N \\
+        &\widetilde{u}_n'\left(t_{qn}^*\right) < \widetilde{u}_1'\left(t_{q1}^*\right) & \text{if } t_{qn}^* = 0,n=2,2,...N \\
+        &\widetilde{u}_w'\left(t_{qw}^*\right) = \frac{-\omega_q u_1'\left(x_{q1}^*\right)}{p_{q1}}  + \widetilde{u}_1'\left(t_{q1}^*\right) & \text{if } t_{qw}^* > 0,w=1,2,...W \\
+        &\widetilde{u}_w'\left(t_{qw}^*\right) < \frac{-\omega_q u_1'\left(x_{q1}^*\right)}{p_{q1}}  + \widetilde{u}_1'\left(t_{q1}^*\right) & \text{if } t_{qw}^* = 0,w=1,2,...W
+    \end{align}
+\end{subequations}
+
+% Random error model
+Stochasticity can be introduced to the model through additive IID error terms as follows
+\begin{subequations}\label{eq:out3}
+    \begin{align}
+    &\psi_{qk} = exp(\bm{\beta}_q' z_{qk} + \epsilon_{qk}) \\
+    &\psi_{qn} = exp(\bm{\widetilde{\beta}}_q' \widetilde{z}_{qn} + \widetilde{\epsilon}_{qn}) \\
+    &\psi_{qw} = exp(\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} + \widetilde{\epsilon}_{qw}) \\
+    \end{align}
+\end{subequations}
+Applying the above stochastic specifications for baseline utility into the KKT conditions given in equations \ref{eq:kkt3}a-f, and applying a ln() transformation, gives the following stochastic KKT conditions
+\begin{subequations}\label{eq:kkt4}
+    \begin{align}
+        &ln\left(\frac{V_{qk}}{p_{qk}} \right) + \bm{\beta}_q' z_{qk} + \epsilon_{qk} = -ln\left(\frac{1}{p_{qk}} \left(x_{q1}^* - x_{q1}^0 \right) \right) + \bm{\beta}_q' z_{q1} + \epsilon_{q1} & \text{if } x_{qk}^* > 0,k=2,2,...K \\
+         &ln\left(\frac{V_{qk}}{p_{qk}} \right) + \bm{\beta}_q' z_{qk} + \epsilon_{qk} < -ln\left(\frac{1}{p_{qk}} \left(x_{q1}^* - x_{q1}^0 \right) \right) + \bm{\beta}_q' z_{q1} + \epsilon_{q1} & \text{if } x_{qk}^* = 0,k=2,2,...K \\
+         &ln\left(\frac{\widetilde{V}_{qn}}{p_{qn}} \right) + \bm{\widetilde{\beta}}_q' z_{qn} + \widetilde{\epsilon}_{qn} = -ln\left(\frac{1}{p_{qn}} \left(t_{q1}^* - t_{q1}^0 \right) \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} + \widetilde{\epsilon}_{q1} & \text{if } t_{qn}^* > 0,n=2,2,...N \\
+        &ln\left(\frac{\widetilde{V}_{qn}}{p_{qn}} \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{qn} + \widetilde{\epsilon}_{qn} < -ln\left(\frac{1}{p_{qn}} \left(t_{q1}^* - t_{q1}^0 \right) \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} + \widetilde{\epsilon}_{q1} & \text{if } t_{qn}^* = 0,n=2,2,...N \\
+        \begin{split}ln\left(\frac{\widetilde{V}_{qw}}{p_{qw}} \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} + \widetilde{\epsilon}_{qw} = ln \Bigg( \frac{-\omega_q}{p_{q1}} \Big( (x_{q1}^* - x_{q1}^0)^{-1} \exp (\bm{\beta}_q' z_{q1} + \epsilon_{q1})\Big) \\ + (t_{q1}^* - t_{q1}^0)^{-1} \exp ( \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} + \widetilde{\epsilon}_{q1}) \Bigg)       \end{split} & \text{if } t_{qw}^* > 0,w=1,2,...W \\
+        \begin{split}ln\left(\frac{\widetilde{V}_{qw}}{p_{qw}} \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} + \widetilde{\epsilon}_{qw} < ln \Bigg( \frac{-\omega_q}{p_{q1}} \Big( (x_{q1}^* - x_{q1}^0)^{-1} \exp (\bm{\beta}_q' z_{q1} + \epsilon_{q1})\Big)  \\ + (t_{q1}^* - t_{q1}^0)^{-1} \exp ( \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} + \widetilde{\epsilon}_{q1}) \Bigg)       \end{split} & \text{if } t_{qw}^* = 0,w=1,2,...W
+    \end{align}
+\end{subequations}
+
+In order to estimate the model, one of the  baseline utility functions must be normalized (typically to 0) for goods consumption and time expenditure. A simple assumption is to normalize the baseline utilities for the outside goods. Assuming IID Type-1 extreme value distributions for the error terms, the probability that an individual $q$ consumes $M$ of the $k$ goods, $\widetilde{M}$ of the non-work activities, and the work activity is given by
+\begin{equation}\label{eq:prob1}
+\begin{split}
+    &P_{q}(x_{q1}^*,x_{q2}^*,...x_{qM}^*,0,0...,0,t_{q1}^*,t_{q2}^*,...t_{q\widetilde{M}}^*,0,0,...0,t_{qw}^*) \\
+    &= \frac{1}{\sigma \sigma^{M-1} \sigma^{\widetilde{M}-1}}\left[c_{qw} \prod_{k=2}^K c_{qk} \sum_{k=1}^M \frac{1}{c_{qk}} \prod_{n}^{\widetilde{M}} c_{qn} \sum_{k=1}^{\widetilde{M}} \frac{1}{c_{qn}} \right] \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \left[\prod_{k=2}^M h\left(\frac{W_k|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right) \prod_{k=2}^M H\left(\frac{W_k|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right) \right] \\
+    &\left[ h\left(\frac{W_n|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right) \prod_{n=2}^{\widetilde{M}} H\left(\frac{W_n|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right) \right]
+    \left[ h\left(\frac{W_w|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right)  H\left(\frac{W_w|(\epsilon_{q1},\widetilde{\epsilon}_{q1})}{\sigma} \right) \right] f(\epsilon_{q1}) f(\widetilde{\epsilon}_{q1}) d\epsilon_{q1} d\widetilde{\epsilon}_{q1}
+\end{split}
+\end{equation}
+where
+\begin{subequations}\label{eq:subprob1}
+\begin{align}
+        &c_{qk} = \frac{1}{x_{qk}^* - x_{qk}^0 + \gamma_{qk}} \\
+        &c_{qn} = \frac{1}{t_{qn}^* - t_{qn}^0 + \gamma_{qn}} \\
+        &W_k|(\epsilon_{q1},\widetilde{\epsilon}_{q1}) = -ln\left(\frac{1}{p_{qk}} \left(x_{q1}^* - x_{q1}^0 \right) \right) + \bm{\beta}_q' z_{q1} - ln\left(\frac{V_{qk}}{p_{qk}} \right) - \bm{\beta}_q' z_{qk} + \epsilon_{q1} \\
+        &W_n|(\epsilon_{q1},\widetilde{\epsilon}_{q1}) = -ln\left(\frac{1}{p_{qn}} \left(t_{q1}^* - t_{q1}^0 \right) \right) + \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} - ln\left(\frac{\widetilde{V}_{qn}}{p_{qn}} \right) - \bm{\widetilde{\beta}}_q' z_{qn} + \widetilde{\epsilon}_{q1} \\
+        \begin{split}W_w|(\epsilon_{q1},\widetilde{\epsilon}_{q1}) = ln \Bigg( \frac{-\omega_q}{p_{q1}} \Big( (x_{q1}^* - x_{q1}^0)^{-1} \exp (\bm{\beta}_q' z_{q1} + \epsilon_{q1})\Big) + (t_{q1}^* - t_{q1}^0)^{-1} \exp ( \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1} + \widetilde{\epsilon}_{q1}) \Bigg) \\ - ln\left(\widetilde{V}_{qw} \right) - \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \end{split}
+\end{align}
+\end{subequations}
+
+We must further normalise the probability function by assuming $\sigma$ equal to unity. The double integral can be simplified by recognising that each of the $k$ terms is independent of the error term $\widetilde{\epsilon}_{q1}$ and each of the $n$ terms is independent of the error term $\epsilon_{q1}$. However, the work activity is dependent upon both error terms because it appears in both function constraints (i.e. is a multidimensional constraint). We follow the normalising assumption of Pinjari and Sivaraman \cite{RawoofPinjari2012ASystem} that the baseline utilities for both goods expenditure and time consumption are the same. Given that we have normalised these functions, such that only the error terms remain, this has almost no bearing on the probability function since only the work term is affected by this assumption. This provides a means of maintaining a closed form, which Astroza et al. \cite{Astroza2017AConsumption} were not able to maintaining - resorting to simulating the conditional utility function. In the above probability function, $h()$ is the Type-1 extreme value pdf and $H()$ is its corresponding cdf.
+
+The closed form components for goods consumption and non-work time allocation can be shown to reduce to forms similar to that of equation 19 in Bhat \cite{Bhat2008TheExtensions}; however, deriving a closed form for work time allocation requires some additional manipulation. Equation \ref{eq:subprob1}e can be simplified before insertion into equation \ref{eq:prob1} as follows
+\begin{equation}
+    W_w|(\epsilon_{q1},\widetilde{\epsilon}_{q1}) = ln \Bigg( a \exp (\epsilon_{q1}) + b \exp (\widetilde{\epsilon}_{q1})\Bigg) - ln\left(\widetilde{V}_{qw} \right) - \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw}
+\end{equation}
+where 
+\begin{subequations}\label{eq:subprob2}
+\begin{align}
+        &a = \frac{-\omega_q}{p_{q1}} \Big( (x_{q1}^* - x_{q1}^0)^{-1} \exp (\bm{\beta}_q' z_{q1})\Big) = \frac{-\omega_q}{p_{q1}(x_{q1}^* - x_{q1}^0)} \\
+        &b = (t_{q1}^* - t_{q1}^0)^{-1} \exp ( \bm{\widetilde{\beta}}_q' \widetilde{z}_{q1}) = \frac{1}{t_{q1}^* - t_{q1}^0}
+\end{align}
+\end{subequations}
+Following the assumption that $\epsilon_{q1}^* = \epsilon_{q1} + \widetilde{\epsilon}_{q1}$, the subcomponent of the probability function for work time allocation can be written as
+\begin{equation}\label{eq:prob2}
+    \begin{split} P_{qw} = \frac{1}{\sigma} c_{qw} \int_{-\infty}^{+\infty} \exp\left(-\ln\left(a+b\right)-\ln\left(\widetilde{V}_{qw} \right) - \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) \exp\left(-\epsilon_{q1}^* \right) \\
+    \exp\left(-\exp\left(-\ln\left(a+b\right)-ln\left(\widetilde{V}_{qw} \right) - \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right) \exp\left( - \exp \left(\epsilon_{q1}^* \right)\right) \exp\left(-\epsilon_{q1}^* \right) d\epsilon_{q1}^* \end{split}
+\end{equation}
+This can be simplified to
+\begin{equation}\label{eq:prob3}
+    \begin{split} P_{qw} = \frac{1}{\sigma} c_{qw} \frac{\exp \left(- \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) }{\left(a+b\right)\widetilde{V}_{qw}} \exp\left(\left(a+b\right)\widetilde{V}_{qw}\right) \exp\left( - \exp \left(-\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right) \\  \int_{-\infty}^{+\infty} \exp\left(-\epsilon_{q1}^* \right) \exp\left( - \exp \left(-\epsilon_{q1}^* \right)\right) \exp\left(-\epsilon_{q1}^* \right) d\epsilon_{q1}^* \end{split}
+\end{equation}
+With the substitutions $t = \exp \left(-\epsilon_{q1}^* \right)$ and $dt = -\exp \left(-\epsilon_{q1}^* \right) d\epsilon_{q1}^*$, the integration can be written as
+\begin{equation}\label{eq:prob4}
+    P_{qw} = \frac{1}{\sigma} c_{qw} \frac{\exp \left(- \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) }{\left(a+b\right)\widetilde{V}_{qw}} \exp\left(\left(a+b\right)\widetilde{V}_{qw}\right) \exp\left( - \exp \left(-\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right)
+    \int_{\infty}^{0}  - t \exp\left( -t \right) dt
+\end{equation}
+Integration by parts can then be employed to solve the integral where $u = t, du = 1, dv = -\exp(-t),$ and $v=\exp(-t)$
+\begin{equation}\label{eq:prob5}
+    P_{qw} = \frac{1}{\sigma} c_{qw} \frac{\exp \left(- \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) }{\left(a+b\right)\widetilde{V}_{qw}} \exp\left(\left(a+b\right)\widetilde{V}_{qw}\right) \exp\left( - \exp \left(-\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right) \left((t+1)\exp^{-t}\Big|_{\infty}^0 \right)
+\end{equation}
+This can be simplified to
+\begin{equation}\label{eq:prob6}
+    P_{qw} = \frac{1}{\sigma} c_{qw} \frac{\exp \left(- \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) }{\left(a+b\right)\widetilde{V}_{qw}} \exp\left(\left(a+b\right)\widetilde{V}_{qw}\right) \exp\left( - \exp \left(-\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right)
+\end{equation}
+where $a<0$, $b>0$, and all other terms are positive. For a valid solution, it must be true that $|a|<|b|$.
+
+The final probability function takes the following form
+\begin{equation}\label{eq:finprob}
+\begin{split}
+    P_{q} = \left[c_{qw} \prod_{k=2}^K c_{qk} \sum_{k=1}^M \frac{1}{c_{qk}} \prod_{n}^{\widetilde{M}} c_{qn} \sum_{k=1}^{\widetilde{M}} \frac{1}{c_{qn}} \right]
+    \left[\frac{\exp \left(- \bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right) }{\left(a+b\right)\widetilde{V}_{qw}} \exp\left(\left(a+b\right)\widetilde{V}_{qw}\right) \exp\left( - \exp \left(-\bm{\widetilde{\beta}}_q' \widetilde{z}_{qw} \right)\right) \right] \\
+    \left[ \frac{\prod\limits_{M=1}^M \exp(W_k)}{\sum\limits_{k=1}^K \exp(W_k)}\left(M-1\right)! \right]
+    \left[ \frac{\prod\limits_{\widetilde{M}=1}^{\widetilde{M}} \exp(W_n)}{\sum\limits_{n=1}^N \exp(W_n)}\left(\widetilde{M}-1\right)! \right]
+\end{split}
+\end{equation}
+where $\sigma$s are suppressed for ease of interpretation and because each is normalized to 1 to ensure the model is identifiable.
+
+\subsection{Residential and Work Location Choice}
+Having developed a model of time allocation and goods consumption, we are now prepared to consider the next level of the model. These models emerge from a careful examination of the constraints on time and goods consumption (i.e. 24 hour less travel time and total household income). The magnitudes of these constraints are principally governed by the residential and work location choices of the household. A household with work locations that provide higher a household income will have an increased ability to locate in more desirable areas and consume more goods. From the perspective of the employer, on an interregional scale, the attractiveness of a residential location will raise residential prices and may require the employer to pay a higher wage rate - higher demand for jobs having a dampening effect on this pattern.
+
+In an intraregional context, wage rate is largely determined by occupation type and exogenous to the model. However, the location of work by occupation will influence the available time budget, net transportation time. It may also affect consumption of out-of-home food, for example through proximity to food vendors during the lunch hour. Residential location choice has a much stronger effect on both time allocation and goods consumption (and potentially vice versa). This is seen most strongly in transportation time and cost to activities, which will vary by residential location. In economic parlance, transportation cost is a component of the transaction cost of an activity or good. Michael Munger (REF) decomposes transaction costs into three components: triangulation, transfer, and trust. DeSerpa and Jara-Diaz \cite{DeSerpa1971,Jara-Diaz2000} frame minimum time constraints as technology constraints, which can be shown to be a function of the quality of the activity or good, but also its implicit transaction costs. These costs will vary depending upon the residential location choice of the household. I will provide several examples. The utility of transportation expenditures in the form of mode choice is heavily influenced by the available options at a specific residential location. The 
+
+This substance of this thesis is the development of econometric methods for linking long-term residential location choice with patterns of household time allocation and goods consumption. However, I always maintained questions around emerging forms of mobility front of mind. One aspect of transaction costs seeing increasing focus in recent years is "trust". The sharing economy, including ride-hailing and short-term residential rentals, factor strongly into this research through consumption decisions by the household. A major driver of the purchase of durable goods (e.g. vehicles and large tools) is the historically high transaction cost associated with the rental of these goods. New technologies are driving down these transaction costs so that it is becoming increasingly viable to rent a vehicle through car-sharing and ride-hailing and borrow large tools rather than purchase them. Changes in vehicle ownership will, at the first order, change mode choice by households. At the second order, there is ample recent research to suggest that residential location choice will also be affected through changes in transportation modality. An aspect related to land use that has not been examined in any detail is how changes in consumption patterns will influence the residential requirements of households. Specifically, a lower space requirement for vehicles and large equipment should reduce the residential space requirements of households.
+
+In the reverse direction, a household that has a preference for preparing their own meals will likely place a lower weight on proximity to restaurants (\textit{ceterus paribus} to a household with a preference for out-of-home meal consumption) and a greater weight on proximity to grocery stores. Similarly, a household may choose a larger dwelling based on their consumption preferences. I now move onto the details of the econometric model linkage to the time and goods consumption model.
+
+The basic MDCEV model is, at its core, an extension of the standard MNL model for a single good. In fact, it collapses to the MNL model when one assumes that only 1 good is consumed by the household. In the same way that one can extend an MNL model to a nested logit model through assumptions about the underlying distribution structure, the MDCEV model can be extended to include the structure of decisions. In the case of a nested logit model, one can consider the interrelated decisions of mode choice and destination choice. The extension I consider here is the joint decision of goods and time consumption with residential and work location choices. These are discrete choices, which cannot be directly incorporated into an MDCEV model structure. Pinjari and Sivaraman \cite{RawoofPinjari2012ASystem} and Eluru et al. \cite{Eluru2010ANBEHAVIOR} have considered the problem of linking discrete choice with MDCEV through the extension of the Type-1 extreme value function to a generalized extreme value (GEV) functional form. The assumption of the MDCEV model is that alternatives are imperfect substitutes. However, in the case of residential location choice the model is estimated using a random sample of notionally perfect substitutes.  
+
+\section{Empirical Investigations}
+\subsection{Residential Location Choice Model}
+
+\subsection{Household Production Function}
+
+\subsection{AV Adoption and Residential Location Choice}
+
+\subsection{TBD}
+
+

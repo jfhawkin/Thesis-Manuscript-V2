@@ -1,0 +1,95 @@
+\chapter{Literature Review}
+\section{Integrated Land Use and Transportation Models}
+Mostly pull from review paper and add at end.
+
+\section{Residential Location Choice Models}
+Draw from publications as we go along. I know the field fairly well. Ellickson and Lerman to Martinez to recent work in field and challenges in terms of endogeneity.
+
+\section{Household Production}
+Household production denotes a distinction in the economic literature between goods and services produced in the market and those produced in the home. Initial development of the model is attributed to Gary Becker and Jack Mincer in the 1960s \cite{Becker1965}. In his 1965 article, Becker outlines the lack of consideration given in the economics literature for the time allocation by households outside working hours. He references a decline in working hours and a dearth of attention for the role of non-compensated work. The classical economic philosophy is to consider consumers to trade productive work time for non-productive leisure time. Becker proposes a model structured about this metric of time to draw out the components of this, so called, leisure time. The theory is best summarized through a series of exemplar comparisons. Consider a household consisting of two adults and two children, who must consider the care of the children during the working day. The first option would be to send the children to daycare, in which case both parents would most likely need to work in order to pay the daycare fee. The second option would be for one parent to stay home and care for the children. This would save on daycare costs, and other household maintenance costs, but lead to a reduced monetary budget. The trade-off in household production theory is generally between 1) additional engagement in the market economy to increase the household budget and 2) devoting household time to the uncompensated production of the good or service. A second example would the production of food for consumption by the household. In general, the time required to produce food decreases with increasing monetary cost, such that a household will trade-off producing food from scratch and consuming a processed meal (whether at home or in a restaurant). Household production of food requires uncompensated time, while processed food requires additional monetary outlays - therefore additional income from compensated work. Becker proposes an adjustment of the classical consumption theory to include a time constraint, in addition to the traditional income constraint. His model was improved upon by Gronau \cite{Gronau1977} and DeSerpa \cite{DeSerpa1971}
+
+%The income constraint can be written in terms of time as follows
+% \begin{equation}
+% 	T_w \bar{w} + m \leq M ,
+% \end{equation}
+% where $T_w$ is the number of working hours, $\bar{w}$ the wage rate, $m$ a measure of other income, and $M$ the total household income. An additional time constraint can be defined as follows
+% \begin{equation}
+% 	T_w + \sum_i^P T_i \leq T ,
+% \end{equation}
+% where $T_i$ is a vector of time spent at various household production activities and $T$ is the time budget (i.e. 24 hours in the day).
+
+This theory has important implications for transportation and land use behaviour model theory. Transportation demand models that follow the activity based (ABM) or microsimulation paradigms are at their core models of time allocation. The time-space prism of Hagerstrand is a common method for structuring this class of transportation demand models \cite{Hagerstrand1970WhatScience}. It has a fairly intuitive interpretation given by constraints on available time (i.e. 24 hours in a day) and skeletal activities (i.e. work, school, and sleep) restricting the time available in which to conduct other activities. The spatial dimension enters as the time required to move between activities, with the time available for an activity being diminished by longer (therefore more time-consuming) travel. Habib has developed an activity scheduling model, based in random utility maximizing, that applies this theory of time expenditure. His CUSTOM framework iteratively develops the set of trips made by a person each day by referencing each destination choice against the available remaining time in the day and the decision to return home. A continuous time horizon is used in CUSTOM to fully capture the decision-making process. The model is fully based in econometric theory and empirical data, in contrast to the hard-wired rules of previous models.
+
+Household production theory takes this principle a step further by incorporating the time constraint into the representation of the economy. Land use models has generally existed at the boundary between economic and transportation modelling. Its inclusion of residential and work location necessary means that land use modelling requires a representation of the cost of housing, the location of work opportunities, and the potential wage at each location. From the perspective of the transportation system, land use determines the length and distribution of trips (as well as mode of travel to a large extent). The focus of this thesis is how the links between these systems are represented in ILUT models. The traditional connection between land use and the economy is to spatially place economic activities within the model region. As discussed above, the connection between land use and transportation is through a measures of accessibility, generally measured as the logsum of a mode choice model or the number of opportunities (i.e. work and shopping) in close proximity. I propose time as the connection between all three systems. It is the organizing principle in activity scheduling and is a major contributor to residential location through the travel time to work and other opportunities. By adopting a form of household production theory, the time allocation of the household can be explicitly represented in economic models of the region.
+
+Travel is negative space of activity participation
+
+Focus on the math...
+
+Becker to DeSerpa to Jara-Diaz
+
+Beginning from Becker, the traditional model of household utility is of the form \cite{Becker1965}
+\begin{equation}
+	U = U(y_1,y_2,...,y_n),
+\end{equation}
+which is subject to the resource constraint \cite{Becker1965}
+\begin{equation}
+	\sum p_i y_i = I = W + V,
+\end{equation}
+where $y_i$ are market goods, $p_i$ are their prices, $I$ is the monetary income of the household, and $W$ and $V$ are the wage and other income components of the household income.
+
+Becker starts from the statement that households "will be assumed to combine time and market goods to produce more basic commodities that directly enter their utility function" \cite[p. 495]{Becker1965}. These commodities are defined by
+\begin{equation}
+	Z_i = f_i(x_i, T_i),
+\end{equation}
+where $f_i$ is the definition of the household production function, $x_i$ are goods purchased on the market, and $T_i$ is time spent in the production of commodity $Z_i$. He then defines a utility function in terms of these new commodities
+\begin{equation}
+	U = U(Z_1,...Z_m) = U(x_1,...x_m; T_1,...T_m)
+\end{equation}
+and the new budget constraint defined by
+\begin{equation}
+	g(Z_1,...Z_m) = Z.
+\end{equation}
+He develops individual constraints for goods and time consumption, which are subsequently combined based on an assumption that time can be converted for goods by spending more time on paid work. This produces a single constrained
+\begin{equation}
+	\sum(p_i b_i + t_i \bar{w})Z_i = V + T \bar{w}
+\end{equation}
+with
+\begin{equation}
+	\pi_i = p_i b_i + t_i \bar{w}
+\end{equation}
+\begin{equation}
+	S' = V + T \bar{w}.
+\end{equation}
+In this formulation, $b_i$ is the price of each good per unit of $Z_i$, $t_i$ is the input of time for each good per unit of $Z_i$, $\pi$ is the expenditure on each good, and $S'$ is the money income. This income is reduced either directly, through the purchase of goods given by $\sum p_i b_i Z_i$, or indirectly through the forfeiture of income, $\sum t_i \bar{w} Z_i$, by the use of time in consumption rather than work.
+
+DeSerpa begins with a critique of Becker, who assumes that all time is uniformly priced at the average wage rate $\bar{w}$. He further extends the theory premised on a minimum time requirement in order to produce a commodity, which may be extended by the household if it obtains an additional utility by continued consumption of time engaged in the activity (i.e. consumption of the commodity). By removing the time prices from his model, DeSerpa maintains the set of two constraints (i.e. goods consumption and time consumption are independent). He defines an inequality constraint as follows
+\begin{equation}
+	T_i \geq a_i X_i,
+\end{equation}
+which states that time spent on the consumption of a good must be at least the minimum set of technological and institutional constraints. A major contribution of his work is this inequality, which he distinguishes as a \emph{time consumption constraint} and distinguishes from the \emph{time resource constraint} defining a maximum available time in the day. He gives the examples of a round of golf, movies, meals, road congestion, and reading as technology constraints. Institutional constraints would be speed limits, rigid work schedules, or banquets.
+
+Another key component of the model is its distinction between \emph{value of time} and \emph{value of saving time}. Value of time as a resource has little meaning because it is not possible to extend time beyond the fixed 24 hours of the day. Value arises from time savings, which can be transferred to alternative higher utility usage. This value is defined by
+\begin{equation}
+	X_i = \frac{\mu}{\lambda} - \frac{U_{n+i}}{\lambda} = \frac{K_i}{\lambda}.
+\end{equation}
+This can be thought of as the marginal rate of substitution between time and money for allocation of time to consumption of $X_i$. In this equation, $\lambda$ is the shadow price of goods consumption and $\mu$ is the shadow price of time consumption from the maximization equation.
+
+Jara-Diaz has extended this work in recent years (since about 2003). His model is defined by
+\begin{equation}
+	\max U = \Omega T_w^{\theta_w} \prod_i T_i^{\theta_i} \prod_j X_j^{\eta_j}
+\end{equation}
+\begin{equation}
+	I + wT_w - \sum_j p_j X_j \geq 0 (giving \lambda)
+\end{equation}
+\begin{equation}
+	\tau - T_w - \sum_i T_i = 0 (giving \mu)
+\end{equation}
+\begin{equation}
+	T_i \geq f_i(X) \forall i (giving \kappa_i)
+\end{equation}
+\begin{equation}
+	X_j \geq g_j(T) \forall j (giving \rho_j) .
+\end{equation}
+The utility is defined as Cobb-Douglas and Jara-Diaz connects the time and goods consumption through a technological relation.
+
